@@ -20,6 +20,10 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
+        // [LogAspect] //// AOP
+        
+
+
         public IResult Add(Product product)
         {
             //business kodlar
@@ -39,7 +43,7 @@ namespace Business.Concrete
             //iş kodları varsa yazılır. şimdilik simulation. buraya iş kodu yazdık diyelim.
             //yetkisi var  mı diye kodlar yazılır.
             //sonra ürğnğ verir kurallardan geçerse.
-            if (DateTime.Now.Hour==22)
+            if (DateTime.Now.Hour==1)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
