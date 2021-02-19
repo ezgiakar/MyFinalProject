@@ -1,8 +1,13 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
+using FluentValidation;
 using Entities.DTOes;
 using System;
 using System.Collections.Generic;
@@ -21,22 +26,24 @@ namespace Business.Concrete
         }
 
         // [LogAspect] //// AOP
-        
 
 
+
+        [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
-            //business kodlar
 
-            if (product.ProductName.Length<2)
-            {
-                //magic string is which I writting right there.
-                return new ErrorResult(Messages.ProductNameInvalid);
-            }
+            //Loglama
+            //cachermove
+            //performance
+            //transaction
+            //yetkilendirme
+
             _productDal.Add(product);
 
             return new SuccessResult(Messages.ProductAdded);
         }
+
 
         public IDataResult<List<Product>> GetAll()
         {
