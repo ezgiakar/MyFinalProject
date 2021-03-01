@@ -15,6 +15,7 @@ using System.Text;
 using Business.CCS;
 using System.Linq;
 using Core.Utilities.Business;
+using Business.BusinessAspects.Autofac;
 
 namespace Business.Concrete
 {
@@ -33,7 +34,7 @@ namespace Business.Concrete
         // [LogAspect] //// AOPppp
 
 
-
+        [SecuredOperation("product.add, admin")]
         [ValidationAspect(typeof(ProductValidator))] //bu bir attribute
         public IResult Add(Product product)
         { //business codes
