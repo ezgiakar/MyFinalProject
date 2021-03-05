@@ -16,5 +16,6 @@ namespace Business.Abstract
         IDataResult<Product> GetById(int productId);
         IResult Update(Product product);
         IResult Add(Product product);
+        IResult AddTransactionalTest(Product product); // aynı süreçte iki tane işlem var.işlem sorunlu oldu işlemin geri alınması gerkiyor.
     }
 }
